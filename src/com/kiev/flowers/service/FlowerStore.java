@@ -12,12 +12,13 @@ public class FlowerStore {
     private int flowersAmount;
     private double wallet;
 
-    List<Rose> roses = new ArrayList<>();
-    List<Chamomile> chamomiles = new ArrayList<>();
-    List<Tulip> tulips = new ArrayList<>();
-    List<Flowers> flowers = new ArrayList<>();
-
     public Flowers[] sell(int roseAmount, int chamomileAmount, int tulipAmount) {
+
+        List<Rose> roses = new ArrayList<>();
+        List<Chamomile> chamomiles = new ArrayList<>();
+        List<Tulip> tulips = new ArrayList<>();
+        List<Flowers> flowers = new ArrayList<>();
+
         flowersAmount = roseAmount + chamomileAmount + tulipAmount;
 
         for (int i = 0; i < flowersAmount; i++) {
@@ -30,15 +31,24 @@ public class FlowerStore {
             }
         }
 
-        wallet = roseAmount * Rose.getPrice() + chamomileAmount * Chamomile.getPrice() + tulipAmount * Tulip.getPrice();
-        return flowers.toArray(new Flowers[flowers.size()]);
+        Flowers[] bouquet = flowers.toArray(new Flowers[flowers.size()]);
+
+        wallet = 0;
+        countWallet(bouquet);
+        return bouquet;
     }
 
-    public Flowers[] sellSequence(int roseAmount, int chamomileAmount, int tulipAmount) {
-        flowersAmount = roseAmount + chamomileAmount + tulipAmount;
-        wallet = roseAmount * Rose.getPrice() + chamomileAmount * Chamomile.getPrice() + tulipAmount * Tulip.getPrice();
 
-        for (int i = 0; i < flowersAmount / 3 + (flowersAmount % 3 == 0 ? 0 : 1); i++) {
+    public Flowers[] sellSequence(int roseAmount, int chamomileAmount, int tulipAmount) {
+
+        List<Rose> roses = new ArrayList<>();
+        List<Chamomile> chamomiles = new ArrayList<>();
+        List<Tulip> tulips = new ArrayList<>();
+        List<Flowers> flowers = new ArrayList<>();
+
+        flowersAmount = roseAmount + chamomileAmount + tulipAmount;
+
+        for (int i = 0; i < (flowersAmount / 3 + (flowersAmount % 3 == 0 ? 0 : 1)) + 1; i++) {
             if (roseAmount > 0) {
                 flowers.add(new Rose());
                 roseAmount--;
@@ -53,12 +63,22 @@ public class FlowerStore {
             }
         }
 
-        return flowers.toArray(new Flowers[flowers.size()]);
+        Flowers[] bouquet = flowers.toArray(new Flowers[flowers.size()]);
+
+        wallet = 0;
+        countWallet(bouquet);
+        return bouquet;
     }
 
     public void outArray(Flowers[] bouquet) {
         for (int i = 0; i < bouquet.length; i++)
             System.out.print(bouquet[i].getPrice() + ", ");
+    }
+
+    private void countWallet(Flowers[] bouquet) {
+        for (int i = 0; i < bouquet.length; i++) {
+            wallet += bouquet[i].getPrice();
+        }
     }
 
     public double getWallet() {

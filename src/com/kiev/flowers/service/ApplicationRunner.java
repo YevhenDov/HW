@@ -5,17 +5,16 @@ import com.kiev.flowers.entity.Flowers;
 public class ApplicationRunner {
     public static void main(String[] args) {
         FlowerStore flowerStore = new FlowerStore();
-        FlowerStore flowerStore2 = new FlowerStore();
 
-        Flowers[] sellFlow = flowerStore2.sell(7, 6, 5);
-        Flowers[] sellSequenceFlow = flowerStore.sellSequence(10, 6, 5);
+        Flowers[] sellFlow = flowerStore.sell(1, 1, 1);
+        Flowers[] sellSequenceFlow = flowerStore.sellSequence(3, 2, 1);
 
         flowerStore.outArray(sellSequenceFlow);
         System.out.println("\n" + flowerStore.getWallet());
 
         System.out.println("=======================");
 
-        flowerStore2.outArray(sellFlow);
-        System.out.println("\n" + flowerStore2.getWallet());
+        flowerStore.outArray(sellFlow);
+        System.out.println("\n" + flowerStore.getWallet());
     }
 }
