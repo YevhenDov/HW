@@ -1,6 +1,11 @@
-package com.kiev.flowers;
+package com.kiev.flowers.service;
 
-import java.util.*;
+import com.kiev.flowers.entity.Chamomile;
+import com.kiev.flowers.entity.Flowers;
+import com.kiev.flowers.entity.Rose;
+import com.kiev.flowers.entity.Tulip;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class FlowerStore {
@@ -17,34 +22,34 @@ public class FlowerStore {
 
         for (int i = 0; i < flowersAmount; i++) {
             if (i < roseAmount) {
-                flowers.add(new Rose(Rose.price));
+                flowers.add(new Rose(Rose.PRICE));
             } else if (i < roseAmount + chamomileAmount) {
-                flowers.add(new Chamomile(Chamomile.price));
+                flowers.add(new Chamomile(Chamomile.PRICE));
             } else if (i < flowersAmount) {
-                flowers.add(new Tulip(Tulip.price));
+                flowers.add(new Tulip(Tulip.PRICE));
             }
         }
 
-        wallet = roseAmount * Rose.price + chamomileAmount * Chamomile.price + tulipAmount * Tulip.price;
+        wallet = roseAmount * Rose.PRICE + chamomileAmount * Chamomile.PRICE + tulipAmount * Tulip.PRICE;
         Flowers[] bouquet = flowers.toArray(new Flowers[flowers.size()]);
         return bouquet;
     }
 
     public Flowers[] sellSequence(int roseAmount, int chamomileAmount, int tulipAmount) {
         flowersAmount = roseAmount + chamomileAmount + tulipAmount;
-        wallet = roseAmount * Rose.price + chamomileAmount * Chamomile.price + tulipAmount * Tulip.price;
+        wallet = roseAmount * Rose.PRICE + chamomileAmount * Chamomile.PRICE + tulipAmount * Tulip.PRICE;
 
         for (int i = 0; i < flowersAmount; i++) {
             if (roseAmount > 0) {
-                flowers.add(new Rose(Rose.price));
+                flowers.add(new Rose(Rose.PRICE));
                 roseAmount--;
             }
             if (chamomileAmount > 0) {
-                flowers.add(new Chamomile(Chamomile.price));
+                flowers.add(new Chamomile(Chamomile.PRICE));
                 chamomileAmount--;
             }
             if (tulipAmount > 0) {
-                flowers.add(new Tulip(Tulip.price));
+                flowers.add(new Tulip(Tulip.PRICE));
                 tulipAmount--;
             }
         }

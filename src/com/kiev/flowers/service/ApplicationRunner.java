@@ -1,6 +1,8 @@
-package com.kiev.flowers;
+package com.kiev.flowers.service;
 
-public class Main {
+import com.kiev.flowers.entity.Flowers;
+
+public class ApplicationRunner {
     public static void main(String[] args) {
         FlowerStore flowerStore = new FlowerStore();
         FlowerStore flowerStore2 = new FlowerStore();

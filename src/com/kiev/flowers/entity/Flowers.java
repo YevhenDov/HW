@@ -1,6 +1,6 @@
-package com.kiev.flowers;
+package com.kiev.flowers.entity;
 
-abstract class Flowers {
+abstract public class Flowers {
     private double price;
 
     public Flowers(double price) {
