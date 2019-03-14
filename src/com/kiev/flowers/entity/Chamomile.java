@@ -6,8 +6,4 @@ public class Chamomile extends Flowers {
     public Chamomile() {
         super(PRICE);
     }
-
-    public static double getPRICE() {
-        return PRICE;
-    }
 }

@@ -6,8 +6,4 @@ public class Tulip extends Flowers {
     public Tulip() {
         super(PRICE);
     }
-
-    public static double getPRICE() {
-        return PRICE;
-    }
 }

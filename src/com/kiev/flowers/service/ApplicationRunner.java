@@ -1,4 +1,4 @@
-package com.kiev.flowers;
+package com.kiev.flowers.service;
 
 import com.kiev.flowers.entity.Flowers;
 
@@ -8,7 +8,7 @@ public class ApplicationRunner {
         FlowerStore flowerStore2 = new FlowerStore();
 
         Flowers[] sellFlow = flowerStore2.sell(7, 6, 5);
-        Flowers[] sellSequenceFlow = flowerStore.sellSequence(7, 6, 5);
+        Flowers[] sellSequenceFlow = flowerStore.sellSequence(10, 6, 5);
 
         flowerStore.outArray(sellSequenceFlow);
         System.out.println("\n" + flowerStore.getWallet());

@@ -1,4 +1,4 @@
-package com.kiev.flowers;
+package com.kiev.flowers.service;
 
 import com.kiev.flowers.entity.Chamomile;
 import com.kiev.flowers.entity.Flowers;
@@ -30,14 +30,13 @@ public class FlowerStore {
             }
         }
 
-        wallet = roseAmount * Rose.getPRICE() + chamomileAmount * Chamomile.getPRICE() + tulipAmount * Tulip.getPRICE();
-        Flowers[] bouquet = flowers.toArray(new Flowers[flowers.size()]);
-        return bouquet;
+        wallet = roseAmount * Rose.getPrice() + chamomileAmount * Chamomile.getPrice() + tulipAmount * Tulip.getPrice();
+        return flowers.toArray(new Flowers[flowers.size()]);
     }
 
     public Flowers[] sellSequence(int roseAmount, int chamomileAmount, int tulipAmount) {
         flowersAmount = roseAmount + chamomileAmount + tulipAmount;
-        wallet = roseAmount * Rose.getPRICE() + chamomileAmount * Chamomile.getPRICE() + tulipAmount * Tulip.getPRICE();
+        wallet = roseAmount * Rose.getPrice() + chamomileAmount * Chamomile.getPrice() + tulipAmount * Tulip.getPrice();
 
         for (int i = 0; i < flowersAmount / 3 + (flowersAmount % 3 == 0 ? 0 : 1); i++) {
             if (roseAmount > 0) {
@@ -54,8 +53,7 @@ public class FlowerStore {
             }
         }
 
-        Flowers[] bouquet = flowers.toArray(new Flowers[flowers.size()]);
-        return bouquet;
+        return flowers.toArray(new Flowers[flowers.size()]);
     }
 
     public void outArray(Flowers[] bouquet) {
