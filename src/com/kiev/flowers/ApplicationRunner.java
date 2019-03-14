@@ -1,4 +1,4 @@
-package com.kiev.flowers.service;
+package com.kiev.flowers;
 
 import com.kiev.flowers.entity.Flowers;
 

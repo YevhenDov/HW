@@ -1,4 +1,4 @@
-package com.kiev.flowers.service;
+package com.kiev.flowers;
 
 import com.kiev.flowers.entity.Chamomile;
 import com.kiev.flowers.entity.Flowers;
@@ -22,34 +22,34 @@ public class FlowerStore {
 
         for (int i = 0; i < flowersAmount; i++) {
             if (i < roseAmount) {
-                flowers.add(new Rose(Rose.PRICE));
+                flowers.add(new Rose());
             } else if (i < roseAmount + chamomileAmount) {
-                flowers.add(new Chamomile(Chamomile.PRICE));
+                flowers.add(new Chamomile());
             } else if (i < flowersAmount) {
-                flowers.add(new Tulip(Tulip.PRICE));
+                flowers.add(new Tulip());
             }
         }
 
-        wallet = roseAmount * Rose.PRICE + chamomileAmount * Chamomile.PRICE + tulipAmount * Tulip.PRICE;
+        wallet = roseAmount * Rose.getPRICE() + chamomileAmount * Chamomile.getPRICE() + tulipAmount * Tulip.getPRICE();
         Flowers[] bouquet = flowers.toArray(new Flowers[flowers.size()]);
         return bouquet;
     }
 
     public Flowers[] sellSequence(int roseAmount, int chamomileAmount, int tulipAmount) {
         flowersAmount = roseAmount + chamomileAmount + tulipAmount;
-        wallet = roseAmount * Rose.PRICE + chamomileAmount * Chamomile.PRICE + tulipAmount * Tulip.PRICE;
+        wallet = roseAmount * Rose.getPRICE() + chamomileAmount * Chamomile.getPRICE() + tulipAmount * Tulip.getPRICE();
 
-        for (int i = 0; i < flowersAmount; i++) {
+        for (int i = 0; i < flowersAmount / 3 + (flowersAmount % 3 == 0 ? 0 : 1); i++) {
             if (roseAmount > 0) {
-                flowers.add(new Rose(Rose.PRICE));
+                flowers.add(new Rose());
                 roseAmount--;
             }
             if (chamomileAmount > 0) {
-                flowers.add(new Chamomile(Chamomile.PRICE));
+                flowers.add(new Chamomile());
                 chamomileAmount--;
             }
             if (tulipAmount > 0) {
-                flowers.add(new Tulip(Tulip.PRICE));
+                flowers.add(new Tulip());
                 tulipAmount--;
             }
         }
