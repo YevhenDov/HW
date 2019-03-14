@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FlowerStore {
-    private int flowersAmount;
     private double wallet;
 
     public Flowers[] sell(int roseAmount, int chamomileAmount, int tulipAmount) {
@@ -19,7 +18,7 @@ public class FlowerStore {
         List<Tulip> tulips = new ArrayList<>();
         List<Flowers> flowers = new ArrayList<>();
 
-        flowersAmount = roseAmount + chamomileAmount + tulipAmount;
+        int flowersAmount = roseAmount + chamomileAmount + tulipAmount;
 
         for (int i = 0; i < flowersAmount; i++) {
             if (i < roseAmount) {
@@ -33,7 +32,6 @@ public class FlowerStore {
 
         Flowers[] bouquet = flowers.toArray(new Flowers[flowers.size()]);
 
-        wallet = 0;
         countWallet(bouquet);
         return bouquet;
     }
@@ -46,9 +44,9 @@ public class FlowerStore {
         List<Tulip> tulips = new ArrayList<>();
         List<Flowers> flowers = new ArrayList<>();
 
-        flowersAmount = roseAmount + chamomileAmount + tulipAmount;
+        int flowersAmount = roseAmount + chamomileAmount + tulipAmount;
 
-        for (int i = 0; i < (flowersAmount / 3 + (flowersAmount % 3 == 0 ? 0 : 1)) + 1; i++) {
+        for (int i = 0; i < (flowersAmount / 3 + (flowersAmount % 3 == 0 ? 0 : 1) + 1); i++) {
             if (roseAmount > 0) {
                 flowers.add(new Rose());
                 roseAmount--;
@@ -65,7 +63,6 @@ public class FlowerStore {
 
         Flowers[] bouquet = flowers.toArray(new Flowers[flowers.size()]);
 
-        wallet = 0;
         countWallet(bouquet);
         return bouquet;
     }
@@ -76,6 +73,8 @@ public class FlowerStore {
     }
 
     private void countWallet(Flowers[] bouquet) {
+
+        wallet = 0;
         for (int i = 0; i < bouquet.length; i++) {
             wallet += bouquet[i].getPrice();
         }
