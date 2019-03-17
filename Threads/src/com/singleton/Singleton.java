@@ -3,6 +3,9 @@ package com.singleton;
 public class Singleton {
     private static volatile Singleton instance;
 
+    private Singleton(){
+    }
+
     public static Singleton getInstance(){
         Singleton localInstance = instance;
         if (localInstance == null){
