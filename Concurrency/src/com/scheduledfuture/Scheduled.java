@@ -1,6 +1,11 @@
 package com.scheduledfuture;
 
-import java.util.concurrent.*;
+        import java.util.concurrent.ExecutionException;
+        import java.util.concurrent.Executors;
+        import java.util.concurrent.ScheduledExecutorService;
+        import java.util.concurrent.ScheduledFuture;
+        import java.util.concurrent.TimeUnit;
+        import java.util.concurrent.Callable;
 
 public class Scheduled {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
@@ -27,7 +32,6 @@ public class Scheduled {
             return "Second task.";
         }
     }
-
 
     static class ThirdTask implements Callable<String> {
         @Override

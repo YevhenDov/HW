@@ -1,8 +1,10 @@
 package com.threadpoolexecutor;
 
-import com.executorservice.Executor;
-
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.Callable;
 
 public class ThreadPool {
     private static final int NUMBER_OF_THREADS = 2;
@@ -15,7 +17,7 @@ public class ThreadPool {
     }
 
     static class Task implements Callable<Integer> {
-        private int i;
+        private int numberOfIterations;
         private int sum;
 
         public Task(){
@@ -23,13 +25,13 @@ public class ThreadPool {
         }
 
         public Task(int i){
-            this.i = i;
+            this.numberOfIterations = i;
         }
 
         @Override
         public Integer call() {
-            for (int j = 0; j < i; j++){
-                sum += i;
+            for (int j = 0; j < numberOfIterations; j++){
+                sum += numberOfIterations;
             }
             return sum;
         }

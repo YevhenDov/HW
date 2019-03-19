@@ -10,22 +10,22 @@ public class Executor {
     public static void main(String[] args) {
         ExecutorService service = Executors.newFixedThreadPool(NUMBERS_OF_THREADS);
         for (int i = 0; i < COUNT_OF_ITERATIONS; i++) {
-            service.execute(new print(i));
+            service.execute(new outValue(i));
         }
         service.shutdown();
 
     }
 
-    static class print implements Runnable {
+    static class outValue implements Runnable {
         private int value;
 
-        public print(int value) {
+        public outValue(int value) {
             this.value = value;
         }
 
         @Override
         public void run() {
-            System.out.println("Print № " + value);
+            System.out.println("Value is " + value);
         }
     }
 }
