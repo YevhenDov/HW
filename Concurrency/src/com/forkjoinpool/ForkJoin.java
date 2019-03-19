@@ -1,4 +1,4 @@
-package com.forkpoinpool;
+package com.forkjoinpool;
 
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
