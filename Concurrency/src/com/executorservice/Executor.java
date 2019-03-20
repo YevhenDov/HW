@@ -13,7 +13,6 @@ public class Executor {
             service.execute(new OutValue(i));
         }
         service.shutdown();
-
     }
 
     static class OutValue implements Runnable {
