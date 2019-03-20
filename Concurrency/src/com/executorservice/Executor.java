@@ -10,16 +10,16 @@ public class Executor {
     public static void main(String[] args) {
         ExecutorService service = Executors.newFixedThreadPool(NUMBERS_OF_THREADS);
         for (int i = 0; i < COUNT_OF_ITERATIONS; i++) {
-            service.execute(new outValue(i));
+            service.execute(new OutValue(i));
         }
         service.shutdown();
 
     }
 
-    static class outValue implements Runnable {
+    static class OutValue implements Runnable {
         private int value;
 
-        public outValue(int value) {
+        public OutValue(int value) {
             this.value = value;
         }
 
